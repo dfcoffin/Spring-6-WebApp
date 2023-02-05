@@ -20,6 +20,9 @@ public class Publisher {
 	private String state;
 	private String zipCode;
 
+	@OneToMany(mappedBy = "publisher")
+	private Set<Book> books;
+
 	public Long getId() {
 		return id;
 	}
