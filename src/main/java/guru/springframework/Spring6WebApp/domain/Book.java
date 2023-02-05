@@ -4,6 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+
+import java.util.Set;
 
 /**
  * @author Donald F. Coffin
@@ -17,6 +22,19 @@ public class Book {
 	private Long id;
 	private String title;
 	private String isbn;
+
+	@ManyToMany
+	@JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+		inverseJoinColumns = @JoinColumn(name = "author_id"))
+	private Set<Book> books;
+	;
+	@public Set<Book> getBooks()
+		return books;
+	}
+
+	public void setBooks(Set<Book> books) {
+		this.books = books;
+	}
 
 	public Long getId() {
 		return id;
