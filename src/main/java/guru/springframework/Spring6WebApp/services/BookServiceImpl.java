@@ -4,8 +4,6 @@ import guru.springframework.Spring6WebApp.domain.Book;
 import guru.springframework.Spring6WebApp.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
-
 /**
  * @author Donald F. Coffin
  */
@@ -19,7 +17,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Iterator<Book> findAll() {
-		return null;
+	public Iterable<Book> findAll() {
+		return bookRepository.findAll();
 	}
 }
